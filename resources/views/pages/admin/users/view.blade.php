@@ -18,15 +18,16 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <dt>ID Produk</dt>
+                            <dt>ID</dt>
                             <dd>#{{$user->id}}</dd>
-                            <dt>Nama Produk</dt>
+                            <dt>Nama</dt>
                             <dd>{{$user->name}}</dd>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    {!! SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->size(300)->backgroundColor(255,255,0)->generate('MyNotePaper'); !!}
+{{--                    {!! SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->size(300)->generate('MyNotePaper',public_path('QR/'.$user->id.'.png')); !!}--}}
+                    {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(300)->generate('MyNotePaper'); !!}
                 </div>
             </div>
         </div>
