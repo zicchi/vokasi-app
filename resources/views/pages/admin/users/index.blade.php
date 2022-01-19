@@ -23,24 +23,27 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Poin</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 @foreach($users as $user)
-                                    @if($user->role != 'superadmin')
                                         <tr>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->point}}</td>
                                             <td>
-                                                <a href="{{route('admin::users::view',[$user])}}" class="btn btn-link">Rincian</a>
-                                                <a href="{{route('admin::users::edit',[$user])}}" class="btn btn-info">Update</a>
-                                                <a href="javascript:;" onclick="if(confirm('Anda yakin ingin menghapus item ini?')){$('#delete-item-{{$user->id}}').submit()};" class="btn btn-danger">Hapus</a>
-                                                <form action="{{ route('admin::users::destroy', [$user]) }}" method="post" class="hidden" id="delete-item-{{ $user->id }}">
-                                                    @csrf
-                                                    @method('delete')
-                                                </form>
+                                                @if($user->attended == false)
+                                                    <span class="badge badge-danger">Belum Absen</span>
+                                                @else
+                                                    <span class="badge badge-success">Sudah Absen</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{route('admin::users::view',[hashid_encode($user->id,'user')])}}" class="btn btn-link">Rincian</a>
+                                                @if($user->attended == false)
+                                                    <a href="{{route('api::index',[$user])}}" target="_blank" class="btn btn-primary">Absen</a>
+                                                @endif
                                             </td>
                                         </tr>
-                                    @endif
                                 @endforeach
                             </table>
                         </div>

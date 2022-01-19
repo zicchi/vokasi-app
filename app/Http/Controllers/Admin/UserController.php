@@ -64,4 +64,15 @@ class UserController extends Controller
         $user->delete();
         return redirect(route('admin::users::index'));
     }
+
+    public function attend($user)
+    {
+        $user = User::find($user);
+        if ($user->attended == false){
+            $user->attended = true;
+            $user->save();
+        }
+
+        return redirect(route('admin::users::index'));
+    }
 }

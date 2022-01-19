@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Api\AttendanceController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,17 @@ Route::group(['namespace' => 'Login', 'prefix' => 'login', 'as' => 'login::'], f
     Route::post('/',[LoginController::class,'login'])->name('login');
 });
 
+Route::group(['namespace' => 'Api', 'as' => 'api::'], function() {
+    Route::get('/attend/{user}',[AttendanceController::class,'index'])->name('index');
+    Route::get('/attend/{user}/success',[AttendanceController::class,'success'])->name('success');
+    Route::get('/attend/{user}/check',[AttendanceController::class,'check'])->name('check');
+});
+
 Route::group(['middleware' => ['admin']],function (){
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::'], function() {
+
+        Route::get('/reset',[DashboardController::class,'resetAttendance'])->name('reset');
+
         Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
         Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
@@ -35,6 +45,7 @@ Route::group(['middleware' => ['admin']],function (){
             Route::put('/edit/{user}',[UserController::class,'update'])->name('update');
             Route::delete('/delete/{user}',[UserController::class,'destroy'])->name('destroy');
             Route::get('/{user}',[UserController::class,'view'])->name('view');
+            Route::get('/attend/{user}',[UserController::class,'attend'])->name('attend');
         });
     });
 });

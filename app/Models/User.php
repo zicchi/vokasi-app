@@ -41,4 +41,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getHashIdAttribute()
+    {
+        return hashid_encode($this->id,'');
+    }
+
+    public function resolveRouteBinding($value, $field = null)
+    {
+        if (!is_numeric($value))
+        {
+            return $this->where('id', hashid_decode($value, 'user'))->firstOrFail();
+        }
+
+        return parent::resolveRouteBinding($value, $field);
+    }
+
+    public function presences()
+    {
+        return $this->hasMany(Presence::class);
+    }
 }
