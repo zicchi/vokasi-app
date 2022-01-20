@@ -22,13 +22,15 @@ Route::group(['namespace' => 'Login', 'prefix' => 'login', 'as' => 'login::'], f
     Route::post('/',[LoginController::class,'login'])->name('login');
 });
 
-Route::group(['namespace' => 'Api', 'as' => 'api::'], function() {
-    Route::get('/attend/{user}',[AttendanceController::class,'index'])->name('index');
-    Route::get('/attend/{user}/success',[AttendanceController::class,'success'])->name('success');
-    Route::get('/attend/{user}/check',[AttendanceController::class,'check'])->name('check');
-});
 
 Route::group(['middleware' => ['admin']],function (){
+
+    Route::group(['namespace' => 'Api', 'as' => 'api::'], function() {
+        Route::get('/attend/{user}',[AttendanceController::class,'index'])->name('index');
+        Route::get('/attend/{user}/success',[AttendanceController::class,'success'])->name('success');
+        Route::get('/attend/{user}/check',[AttendanceController::class,'check'])->name('check');
+    });
+
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::'], function() {
 
         Route::get('/reset',[DashboardController::class,'resetAttendance'])->name('reset');

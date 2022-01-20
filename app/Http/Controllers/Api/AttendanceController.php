@@ -12,7 +12,6 @@ class AttendanceController extends Controller
     {
         if ($user->attended == false){
             $user->attended = true;
-            $user->point = $user->point + 1000;
             $user->save();
 
             return redirect(route('api::success',[hashid_encode($user->id,'user')]));
