@@ -13,6 +13,19 @@
         </div>
         <div class="section-body ">
             <div class="card">
+                <div class="card-header-action">
+                    <div class="card-header">
+                        <ul class="mr-auto"></ul>
+                        <form action="{{route('admin::users::index')}}">
+                            <div class="input-group">
+                                <input type="text" name="name" class="form-control" placeholder="Search">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary text-white">Cari</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table table-striped table-md">
