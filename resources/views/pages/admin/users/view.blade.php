@@ -35,13 +35,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <img alt="" src="data:image/png;base64, {!! base64_encode(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->size(300)->generate(route('api::index', [hashid_encode($user->id,'user')]))) !!} ">
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="col-md-6">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-body">--}}
+{{--                            <img alt="" src="data:image/png;base64, {!! base64_encode(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->size(300)->generate(route('api::index', [hashid_encode($user->id,'user')]))) !!} ">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </section>

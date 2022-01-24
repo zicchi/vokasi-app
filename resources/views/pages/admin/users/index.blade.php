@@ -15,7 +15,17 @@
         <div class="section-body">
                 <div class="card">
                     <div class="card-header">
-                        <a href="{{route('admin::users::create')}}" class="btn btn-primary">Tambah User +</a>
+                        <a href="{{route('admin::users::create')}}" class="btn btn-primary mr-auto">Tambah User +</a>
+                        <div class="card-header-action">
+                            <form action="{{route('admin::users::index')}}">
+                                <div class="input-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Search">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-primary text-white">Cari</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -29,17 +39,19 @@
                                         <tr>
                                             <td>{{$user->name}}</td>
                                             <td>
-                                                @if($user->attended == false)
+                                                @if($user->status == 100)
                                                     <span class="badge badge-danger">Belum ambil hadiah</span>
+                                                @elseif($user->status == 1)
+                                                    <span class="badge badge-warning">Pending</span>
                                                 @else
                                                     <span class="badge badge-success">Sudah ambil hadiah</span>
                                                 @endif
                                             </td>
                                             <td>
                                                 <a href="{{route('admin::users::view',[hashid_encode($user->id,'user')])}}" class="btn btn-link">Rincian</a>
-                                                @if($user->attended == false)
-                                                    <a href="javascript:" onclick="if(confirm('Hadiah {{$user->name}} akan diambil')){$('#get-item-{{$user->id}}').submit()}" class="btn btn-primary">Hadiah</a>
-                                                    <form target="_blank" action="{{ route('api::index', [$user]) }}" method="get" class="hidden" id="get-item-{{ $user->id }}">
+                                                @if(!$user->status == \App\Models\User::STATUS_SUCCESS  )
+                                                    <a href="javascript:" onclick="if(confirm('Hadiah {{$user->name}} akan diambil')){$('#get-item-{{$user->id}}').submit()}" class="btn btn-primary">Ubah Status</a>
+                                                    <form action="{{ route('admin::users::success', [$user]) }}" method="get" class="hidden" id="get-item-{{ $user->id }}">
                                                     </form>
                                                 @endif
                                             </td>

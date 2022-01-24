@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(5);
+        $users = User::when($request->filled('name'),function ($q){
+            $q->where('name','like',"%".\request()->input('name')."%");
+        })->paginate();
         return view('pages.admin.users.index',[
             'users' => $users
         ]);
@@ -30,6 +32,7 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
+        $user->status = $request->input('status');
         $user->save();
 
         return redirect(route('admin::users::index'));
@@ -54,6 +57,7 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
+        $user->status = $request->input('status');
         $user->save();
 
         return redirect(route('admin::users::index'));
@@ -65,13 +69,18 @@ class UserController extends Controller
         return redirect(route('admin::users::index'));
     }
 
-    public function attend($user)
+    public function success(User $user)
     {
-        $user = User::find($user);
-        if ($user->attended == false){
-            $user->attended = true;
-            $user->save();
-        }
+        $user->status = User::STATUS_SUCCESS;
+        $user->save();
+
+        return redirect(route('admin::users::index'));
+    }
+
+    public function pending(User $user)
+    {
+        $user->status = User::STATUS_PENDING;
+        $user->save();
 
         return redirect(route('admin::users::index'));
     }

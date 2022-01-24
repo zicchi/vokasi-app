@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\AttendanceController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Main\UserController as ListUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,9 @@ Route::group(['namespace' => 'Login', 'prefix' => 'login', 'as' => 'login::'], f
     Route::get('/',[LoginController::class,'index'])->name('index');
     Route::post('/',[LoginController::class,'login'])->name('login');
 });
-
+Route::group(['prefix' => 'list', 'as' => 'list::'], function() {
+    Route::get('/',[ListUserController::class,'index'])->name('index');
+});
 
 Route::group(['middleware' => ['admin']],function (){
 
@@ -47,7 +50,7 @@ Route::group(['middleware' => ['admin']],function (){
             Route::put('/edit/{user}',[UserController::class,'update'])->name('update');
             Route::delete('/delete/{user}',[UserController::class,'destroy'])->name('destroy');
             Route::get('/{user}',[UserController::class,'view'])->name('view');
-            Route::get('/attend/{user}',[UserController::class,'attend'])->name('attend');
+            Route::get('/status/{user}',[UserController::class,'success'])->name('success');
         });
     });
 });
