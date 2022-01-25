@@ -48,20 +48,23 @@
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" required="" value="{{ $user->email }}">
+                            <input type="email" class="form-control" name="email" required=""
+                                value="{{ $user->email }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Jabatan</label>
+                            <input type="jabatan" class="form-control" name="jabatan" required=""
+                                value="{{ $user->jabatan }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Fakultas</label>
+                            <input type="fakultas" class="form-control" name="fakultas" required=""
+                                value="{{ $user->fakultas }}">
                         </div>
                         <div class="form-group">
                             <label>Status</label>
                             <input type="status" class="form-control" name="status" required=""
                                 value="{{ $user->status }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Wewenang</label>
-                            <select name="role" id="role" class="form-control">
-                                <option value="staff" {{ $user->role == 'staff' ? 'selected' : '' }}>Staff</option>
-                                <option value="manager" {{ $user->role == 'manager' ? 'selected' : '' }}>Manajer</option>
-                                <option value="owner" {{ $user->role == 'owner' ? 'selected' : '' }}>Pemilik</option>
-                            </select>
                         </div>
                     </div>
                     <div class="card-footer text-right">

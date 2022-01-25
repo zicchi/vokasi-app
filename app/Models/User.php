@@ -23,6 +23,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'jabatan',
+        'fakultas',
         'email',
         'password',
     ];
@@ -48,13 +50,12 @@ class User extends Authenticatable
 
     public function getHashIdAttribute()
     {
-        return hashid_encode($this->id,'');
+        return hashid_encode($this->id, '');
     }
 
     public function resolveRouteBinding($value, $field = null)
     {
-        if (!is_numeric($value))
-        {
+        if (!is_numeric($value)) {
             return $this->where('id', hashid_decode($value, 'user'))->firstOrFail();
         }
 

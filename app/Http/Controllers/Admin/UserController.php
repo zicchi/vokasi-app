@@ -10,10 +10,10 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = User::when($request->filled('name'),function ($q){
-            $q->where('name','like',"%".\request()->input('name')."%");
+        $users = User::when($request->filled('name'), function ($q) {
+            $q->where('name', 'like', "%" . \request()->input('name') . "%");
         })->paginate();
-        return view('pages.admin.users.index',[
+        return view('pages.admin.users.index', [
             'users' => $users
         ]);
     }
@@ -21,7 +21,7 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('pages.admin.users.form',[
+        return view('pages.admin.users.form', [
             'user' => $user
         ]);
     }
@@ -32,6 +32,8 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
+        $user->jabatan = $request->input('jabatan');
+        $user->fakultas = $request->input('fakultas');
         $user->status = $request->input('status');
         $user->save();
 
@@ -40,23 +42,25 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('pages.admin.users.form',[
+        return view('pages.admin.users.form', [
             'user' => $user
         ]);
     }
 
     public function view(User $user)
     {
-        return view('pages.admin.users.view',[
+        return view('pages.admin.users.view', [
             'user' => $user
         ]);
     }
 
-    public function update(Request $request,User $user)
+    public function update(Request $request, User $user)
     {
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
+        $user->jabatan = $request->input('jabatan');
+        $user->fakultas = $request->input('fakultas');
         $user->status = $request->input('status');
         $user->save();
 
