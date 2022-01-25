@@ -16,7 +16,7 @@
                 <div class="card-header-action">
                     <div class="card-header">
                         <ul class="mr-auto"></ul>
-                        <form action="{{route('admin::users::index')}}">
+                        <form action="{{route('list::index')}}">
                             <div class="input-group">
                                 <input type="text" name="name" class="form-control" placeholder="Search">
                                 <div class="input-group-btn">
