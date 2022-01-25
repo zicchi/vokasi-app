@@ -48,51 +48,44 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal"
-                                        data-target="#modalMd"><i class="far fa-edit"></i>
-                                        Ambil</a>
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Aw,
+                                        yeah!</button>
                                 </td>
                             </tr>
                         @endforeach
                     </table>
                 </div>
-                <div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Modal body text goes here.</p>
-                            </div>
-                            <div class="modal-footer bg-whitesmoke br">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
+            </div>
+            <div class="card-footer text-right">
+                <nav class="d-inline-block">
+                    <ul class="pagination mb-0">
+                        {{ $users->appends([
+                                'name' => request()->input('name'),
+                            ])->links() }}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        </div>
+
+        <div class="modal fade" tabindex="100" role="dialog" id="exampleModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>
-                <div class="card-footer text-right">
-                    <nav class="d-inline-block">
-                        <ul class="pagination mb-0">
-                            {{ $users->appends([
-                                    'name' => request()->input('name'),
-                                ])->links() }}
-                        </ul>
-                    </nav>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer bg-whitesmoke br">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    {{-- <script>
-        $(document).on('ajaxComplete ready', function() {
-            $('.modalMd').off('click').on('click', function() {
-                $('#modalMdContent').load($(this).attr('value'));
-                $('#modalMdTitle').html($(this).attr('title'));
-            });
-        });
-    </script> --}}
 @endsection

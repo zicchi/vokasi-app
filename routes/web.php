@@ -18,39 +18,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'Login', 'prefix' => 'login', 'as' => 'login::'], function() {
-    Route::get('/',[LoginController::class,'index'])->name('index');
-    Route::post('/',[LoginController::class,'login'])->name('login');
-});
-Route::group(['prefix' => 'list', 'as' => 'list::'], function() {
-    Route::get('/',[ListUserController::class,'index'])->name('index');
+Route::get('/tes', function () {
+    return view('pages.main.user.tes');
 });
 
-Route::group(['middleware' => ['admin']],function (){
+Route::group(['namespace' => 'Login', 'prefix' => 'login', 'as' => 'login::'], function () {
+    Route::get('/', [LoginController::class, 'index'])->name('index');
+    Route::post('/', [LoginController::class, 'login'])->name('login');
+});
+Route::group(['prefix' => 'list', 'as' => 'list::'], function () {
+    Route::get('/', [ListUserController::class, 'index'])->name('index');
+});
 
-    Route::group(['namespace' => 'Api', 'as' => 'api::'], function() {
-        Route::get('/attend/{user}',[AttendanceController::class,'index'])->name('index');
-        Route::get('/attend/{user}/success',[AttendanceController::class,'success'])->name('success');
-        Route::get('/attend/{user}/check',[AttendanceController::class,'check'])->name('check');
+Route::group(['middleware' => ['admin']], function () {
+
+    Route::group(['namespace' => 'Api', 'as' => 'api::'], function () {
+        Route::get('/attend/{user}', [AttendanceController::class, 'index'])->name('index');
+        Route::get('/attend/{user}/success', [AttendanceController::class, 'success'])->name('success');
+        Route::get('/attend/{user}/check', [AttendanceController::class, 'check'])->name('check');
     });
 
-    Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::'], function() {
+    Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::'], function () {
 
-        Route::get('/reset',[DashboardController::class,'resetAttendance'])->name('reset');
+        Route::get('/reset', [DashboardController::class, 'resetAttendance'])->name('reset');
 
-        Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-        Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::group(['namespace' => 'Users', 'prefix' => 'users', 'as' => 'users::'], function() {
-            Route::get('/',[UserController::class,'index'])->name('index');
-            Route::get('/create',[UserController::class,'create'])->name('create');
-            Route::post('/create',[UserController::class,'store'])->name('store');
-            Route::get('/edit/{user}',[UserController::class,'edit'])->name('edit');
-            Route::put('/edit/{user}',[UserController::class,'update'])->name('update');
-            Route::delete('/delete/{user}',[UserController::class,'destroy'])->name('destroy');
-            Route::get('/{user}',[UserController::class,'view'])->name('view');
-            Route::get('/status/{user}',[UserController::class,'success'])->name('success');
+        Route::group(['namespace' => 'Users', 'prefix' => 'users', 'as' => 'users::'], function () {
+            Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::get('/create', [UserController::class, 'create'])->name('create');
+            Route::post('/create', [UserController::class, 'store'])->name('store');
+            Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
+            Route::put('/edit/{user}', [UserController::class, 'update'])->name('update');
+            Route::delete('/delete/{user}', [UserController::class, 'destroy'])->name('destroy');
+            Route::get('/{user}', [UserController::class, 'view'])->name('view');
+            Route::get('/status/{user}', [UserController::class, 'success'])->name('success');
         });
     });
 });
