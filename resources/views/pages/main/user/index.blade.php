@@ -45,7 +45,9 @@
                 <div class="card-footer text-right">
                     <nav class="d-inline-block">
                         <ul class="pagination mb-0">
-                            {{$users->links()}}
+                            {{$users->appends([
+                                'name' => request()->input('name')
+                            ])->links()}}
                         </ul>
                     </nav>
                 </div>
