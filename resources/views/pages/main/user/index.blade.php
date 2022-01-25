@@ -48,12 +48,32 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>
+                                    <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal"
+                                        data-target="#modalMd"><i class="far fa-edit"></i>
                                         Ambil</a>
                                 </td>
                             </tr>
                         @endforeach
                     </table>
+                </div>
+                <div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Modal body text goes here.</p>
+                            </div>
+                            <div class="modal-footer bg-whitesmoke br">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer text-right">
                     <nav class="d-inline-block">
@@ -65,9 +85,14 @@
                     </nav>
                 </div>
             </div>
-
-
-
         </div>
     </section>
+    {{-- <script>
+        $(document).on('ajaxComplete ready', function() {
+            $('.modalMd').off('click').on('click', function() {
+                $('#modalMdContent').load($(this).attr('value'));
+                $('#modalMdTitle').html($(this).attr('title'));
+            });
+        });
+    </script> --}}
 @endsection
