@@ -10,8 +10,8 @@ class AttendanceController extends Controller
 {
     public function index(User $user)
     {
-        if ($user->attended == false){
-            $user->attended = true;
+        if ($user->status == User::STATUS_DEFAULT){
+            $user->status = User::STATUS_SUCCESS;
             $user->save();
 
             return redirect(route('api::success',[hashid_encode($user->id,'user')]));

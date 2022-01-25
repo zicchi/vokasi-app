@@ -49,9 +49,9 @@
                                             </td>
                                             <td>
                                                 <a href="{{route('admin::users::view',[hashid_encode($user->id,'user')])}}" class="btn btn-link">Rincian</a>
-                                                @if(!$user->status == \App\Models\User::STATUS_SUCCESS  )
+                                                @if($user->status == \App\Models\User::STATUS_DEFAULT  )
                                                     <a href="javascript:" onclick="if(confirm('Hadiah {{$user->name}} akan diambil')){$('#get-item-{{$user->id}}').submit()}" class="btn btn-primary">Ubah Status</a>
-                                                    <form action="{{ route('admin::users::success', [$user]) }}" method="get" class="hidden" id="get-item-{{ $user->id }}">
+                                                    <form action="{{ route('api::index', [$user]) }}" method="get" class="hidden" id="get-item-{{ $user->id }}">
                                                     </form>
                                                 @endif
                                             </td>
