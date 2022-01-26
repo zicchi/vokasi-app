@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PresenceController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\AttendanceController;
 use App\Http\Controllers\Auth\LoginController;
@@ -55,6 +56,10 @@ Route::group(['middleware' => ['admin']], function () {
             Route::delete('/delete/{user}', [UserController::class, 'destroy'])->name('destroy');
             Route::get('/{user}', [UserController::class, 'view'])->name('view');
             Route::get('/status/{user}', [UserController::class, 'success'])->name('success');
+        });
+
+        Route::group(['prefix' => 'presences', 'as' => 'presences::'], function () {
+            Route::get('/', [PresenceController::class, 'index'])->name('index');
         });
     });
 });

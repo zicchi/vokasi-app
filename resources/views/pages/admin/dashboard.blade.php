@@ -11,16 +11,9 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">Reset Kehadiran</div>
-                    <div class="card-body"><a href="{{route('admin::reset')}}" class="btn btn-primary btn-block">Reset</a></div>
-                    <div class="card-footer text-muted text-center"><i>Fitur ini untuk cadangan jika fitur reset otomatis tidak dapat digunakan</i></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
                     <div class="card-header">Jumlah Kehadiran</div>
                     <div class="card-body text-large">
-                        <h3>0</h3>
+                        <h3>{{$users}}</h3>
                     </div>
                     <div class="card-footer text-muted text-center"><i>Jumlah hadir pada {{now()->format('d, M Y')}}</i></div>
                 </div>
