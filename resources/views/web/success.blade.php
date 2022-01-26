@@ -7,10 +7,11 @@
         <div class="row">
             <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
 
-                <img src="{{ asset('assets/logo/ub.png') }}" alt="logo-ub" style="margin-top: 2rem; display: block;
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 20%;">
+                <img src="{{ asset('assets/logo/ub.png') }}" alt="logo-ub"
+                    style="margin-top: 2rem; display: block;
+                                                                                                                        margin-left: auto;
+                                                                                                                        margin-right: auto;
+                                                                                                                        width: 20%;">
                 <div class="login-brand">
                     Vokasi Universitas Brawijaya
                 </div>
@@ -67,10 +68,7 @@
             </div>
         </div>
     </div>
-    <script>
-        function pageRedirect() {
-            window.location.replace("http://localhost:8000/list/");
-        }
-        setTimeout("pageRedirect()", 10000);
-    </script>
+    <div class="footer text-center pb-5">
+        <a href="/list"><i class="fas fa-long-arrow-alt-left"></i><b> Back To Homepage</b></a>
+    </div>
 @endsection

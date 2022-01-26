@@ -61,9 +61,18 @@
                             <input type="fakultas" class="form-control" name="fakultas" value="{{ $user->fakultas }}">
                         </div>
                         <div class="form-group">
-                            <label>Status</label>
-                            <input type="status" class="form-control" name="status" required=""
-                                value="{{ $user->status }}">
+                            <div class="form-group">
+                                <label>Select</label>
+                                <select class="form-control" name="status">
+                                    @if ($user->status == 100)
+                                        <option value="100">Belum Absen</option>
+                                        <option value="2">Sudah Absen</option>
+                                    @else
+                                        <option value="2">Sudah Absen</option>
+                                        <option value="100">Belum Absen</option>
+                                    @endif
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer text-right">
