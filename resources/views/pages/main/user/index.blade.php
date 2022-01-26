@@ -48,7 +48,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Aw,
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$user->id}}">Aw,
                                         yeah!</button>
                                 </td>
                             </tr>
@@ -66,26 +66,27 @@
                 </nav>
             </div>
         </div>
-        </div>
-
-        <div class="modal fade" tabindex="100" role="dialog" id="exampleModal">
-            <div class="modal-dialog" role="document">
+    </section>
+    @foreach($users as $user)
+        <div class="modal fade" tabindex="100" role="dialog" id="exampleModal{{$user->id}}">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">Konfirmasi</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Modal body text goes here.</p>
+                        <dt>Nama</dt>
+                        <dd>{{$user->name}}</dd>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <a href="{{route('api::index',[$user])}}" class="btn btn-primary">Hadir</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    @endforeach
 @endsection
