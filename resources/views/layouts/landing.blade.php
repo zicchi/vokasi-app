@@ -26,7 +26,13 @@
         <div class="main-wrapper container">
 
             <!-- Main Content -->
-            <div class="navbar-bg"></div>
+            <div class="navbar-bg">
+
+                <img src="{{ asset('assets/logo/ub.png') }}" alt="logo-ub" style="margin-top: 2rem; display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 10%;">
+            </div>
             <div class="main-content">
                 @yield('content')
             </div>

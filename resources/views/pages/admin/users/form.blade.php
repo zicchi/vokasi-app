@@ -58,8 +58,7 @@
                         </div>
                         <div class="form-group">
                             <label>Fakultas</label>
-                            <input type="fakultas" class="form-control" name="fakultas" required=""
-                                value="{{ $user->fakultas }}">
+                            <input type="fakultas" class="form-control" name="fakultas" value="{{ $user->fakultas }}">
                         </div>
                         <div class="form-group">
                             <label>Status</label>
