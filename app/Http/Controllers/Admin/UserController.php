@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $users = User::when($request->filled('name'), function ($q) {
             $q->where('name', 'like', "%" . \request()->input('name') . "%");
-        })->paginate();
+        })->paginate(10);
         return view('pages.admin.users.index', [
             'users' => $users
         ]);
