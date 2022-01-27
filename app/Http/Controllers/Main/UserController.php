@@ -10,9 +10,7 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = User::when($request->filled('name'), function ($q) {
-            $q->where('name', 'like', "%" . \request()->input('name') . "%");
-        })->paginate(10);
+        $users = User::get();
         return view('pages.main.user.index', [
             'users' => $users
         ]);

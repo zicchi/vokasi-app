@@ -11,69 +11,7 @@
             <h1>Data Undangan</h1>
         </div>
         <div class="section-body ">
-            <div class="card">
-                <div class="card-header-action">
-                    <div class="card-header">
-                        <ul class="mr-auto"></ul>
-                        <form action="{{ route('list::index') }}">
-                            <div class="input-group">
-                                <input type="text" name="name" class="form-control" placeholder="Search" height="2rem">
-                                <div class="input-group-btn ml-2">
-                                    <button class="btn btn-primary text-white">Cari</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Jabatan</th>
-                                <th scope="col">Fakultas</th>
-                                <th scope="col">Merchandise</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            @foreach ($users as $user)
-                                <tr>
-                                    <td scope="row">{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->jabatan }}</td>
-                                    <td>{{ $user->fakultas }}</td>
-                                    <td>
-                                        @if ($user->status == 100)
-                                            <span class="badge badge-danger">Belum Diambil</span>
-                                        @else
-                                            <span class="badge badge-success">Sudah Diambil</span>
-
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($user->status == 100)
-                                            <button class="btn btn-primary" data-toggle="modal"
-                                                data-target="#exampleModal{{ $user->id }}">
-                                                Konfirmasi</button>
-                                        @else
-                                            <button class="btn btn-secondary">Konfirmasi</button>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer text-right mb-8">
-                <nav class="d-inline-block">
-                    <ul class="pagination mb-0">
-                        {{ $users->appends([
-                                'name' => request()->input('name'),
-                            ])->links() }}
-                    </ul>
-                </nav>
-            </div>
+           <livewire:user-search />
         </div>
     </section>
     @foreach ($users as $user)
