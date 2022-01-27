@@ -62,14 +62,14 @@
                         </div>
                         <div class="form-group">
                             <div class="form-group">
-                                <label>Select</label>
+                                <label>Merchandise</label>
                                 <select class="form-control" name="status">
                                     @if ($user->status == 100)
-                                        <option value="100">Belum Absen</option>
-                                        <option value="2">Sudah Absen</option>
+                                        <option value="100">Belum Ambil</option>
+                                        <option value="2">Sudah Ambil</option>
                                     @else
-                                        <option value="2">Sudah Absen</option>
-                                        <option value="100">Belum Absen</option>
+                                        <option value="2">Sudah Ambil</option>
+                                        <option value="100">Belum Ambil</option>
                                     @endif
                                 </select>
                             </div>

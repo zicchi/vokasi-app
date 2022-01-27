@@ -9,9 +9,9 @@
 
                 <img src="{{ asset('assets/logo/ub.png') }}" alt="logo-ub"
                     style="margin-top: 2rem; display: block;
-                                                                                                                        margin-left: auto;
-                                                                                                                        margin-right: auto;
-                                                                                                                        width: 20%;">
+                                                                                                                                                            margin-left: auto;
+                                                                                                                                                            margin-right: auto;
+                                                                                                                                                            width: 20%;">
                 <div class="login-brand">
                     Vokasi Universitas Brawijaya
                 </div>
@@ -41,8 +41,11 @@
                                         <span>&times;</span>
                                     </button>
                                     <div id="message">
-                                        Terima kasih kepada <b>{{ $user->name }} </b>telah melakukan absensi, <br>
-                                        silahkan ambil merchandise di booth selanjutnya.
+                                        Terima Kasih <b>{{ $user->name }} </b> kehadirannya dalam Peresmian Fakultas dan
+                                        Gedung Vokasi Universitas Brawijaya.
+                                        <br>
+                                        <br>
+                                        Silahkan mengambil merchandise di booth selanjutnya.
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +53,6 @@
                         <dt>Nama</dt>
                         <dd>{{ $user->name }}</dd>
                         <dt>Jabatan</dt>
-
                         <dd>{{ $user->jabatan }}</dd>
                         <dt>Fakultas</dt>
                         <dd>{{ $user->fakultas }}</dd>
@@ -71,4 +73,10 @@
     <div class="footer text-center pb-5">
         <a href="/list"><i class="fas fa-long-arrow-alt-left"></i><b> Back To Homepage</b></a>
     </div>
+    {{-- <script>
+        function pageRedirect() {
+            window.location.replace("http://localhost:8000/list/");
+        }
+        setTimeout("pageRedirect()", 10000);
+    </script> --}}
 @endsection

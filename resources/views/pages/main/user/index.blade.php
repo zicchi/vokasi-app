@@ -8,7 +8,7 @@
     </div>
     <section class="section mb-5">
         <div class="section-header">
-            <h1>Absensi</h1>
+            <h1>Data Undangan</h1>
         </div>
         <div class="section-body ">
             <div class="card">
@@ -32,7 +32,7 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Jabatan</th>
                             <th scope="col">Fakultas</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Merchandise</th>
                             <th scope="col">Action</th>
                         </tr>
                         @foreach ($users as $user)
@@ -52,9 +52,10 @@
                                 <td>
                                     @if ($user->status == 100)
                                         <button class="btn btn-primary" data-toggle="modal"
-                                            data-target="#exampleModal{{ $user->id }}">Absen</button>
+                                            data-target="#exampleModal{{ $user->id }}">
+                                            Konfirmasi</button>
                                     @else
-                                        <button class="btn btn-secondary">Absen</button>
+                                        <button class="btn btn-secondary">Konfirmasi</button>
                                     @endif
                                 </td>
                             </tr>
@@ -91,10 +92,9 @@
                                         <span>&times;</span>
                                     </button>
                                     <div id="message">
-                                        Saat ini <b>{{ $user->name }} </b>belum mengambil merchandise, <br> silahkan click
-                                        tombol
-                                        hadir
-                                        untuk mendapatkan merchandise.
+                                        Selamat datang <b>{{ $user->name }} </b>. Silahkan menunjukkan pesan ini ke
+                                        panitia
+                                        untuk mengambil merchandise.
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                         <dd>{{ $user->jabatan }}</dd>
                         <dt>Fakultas</dt>
                         <dd>{{ $user->fakultas }}</dd>
-                        <dt>Status</dt>
+                        <dt>Merchandise</dt>
                         <dd>
                             @if ($user->status == 100)
                                 <span class="badge badge-danger">Belum Diambil</span>
@@ -128,8 +128,8 @@
                         </dd>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
-                        <a href="{{ route('api::index', [$user]) }}" class="btn btn-primary">Hadir</a>
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                        <a href="{{ route('api::index', [$user]) }}" class="btn btn-success">Hadir</a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
