@@ -13,6 +13,11 @@ class UserSearch extends Component
 
     public $query;
 
+    public function updatingQuery()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $users = User::where('name', 'like', "%" . $this->query . "%")->paginate(20);
