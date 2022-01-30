@@ -10,6 +10,7 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
+        abort_if(auth('admin')->user()->role != 'admin',403,'Forbidden Access');
         $users = User::when($request->filled('name'), function ($q) {
             $q->where('name', 'like', "%" . \request()->input('name') . "%");
         })->paginate(10);
@@ -20,6 +21,7 @@ class UserController extends Controller
 
     public function create()
     {
+        abort_if(auth('admin')->user()->role != 'admin',403,'Forbidden Access');
         $user = new User();
         return view('pages.admin.users.form', [
             'user' => $user
@@ -42,6 +44,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        abort_if(auth('admin')->user()->role != 'admin',403,'Forbidden Access');
         return view('pages.admin.users.form', [
             'user' => $user
         ]);
@@ -49,6 +52,7 @@ class UserController extends Controller
 
     public function view(User $user)
     {
+        abort_if(auth('admin')->user()->role != 'admin',403,'Forbidden Access');
         return view('pages.admin.users.view', [
             'user' => $user
         ]);
@@ -75,6 +79,7 @@ class UserController extends Controller
 
     public function success(User $user)
     {
+        abort_if(auth('admin')->user()->role != 'admin',403,'Forbidden Access');
         $user->status = User::STATUS_SUCCESS;
         $user->save();
 
@@ -83,6 +88,7 @@ class UserController extends Controller
 
     public function pending(User $user)
     {
+        abort_if(auth('admin')->user()->role != 'admin',403,'Forbidden Access');
         $user->status = User::STATUS_PENDING;
         $user->save();
 

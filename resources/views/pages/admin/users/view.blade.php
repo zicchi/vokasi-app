@@ -32,6 +32,16 @@
                             <dd>#{{$user->id}}</dd>
                             <dt>Nama</dt>
                             <dd>{{$user->name}}</dd>
+                            @if($user->status == \App\Models\User::STATUS_SUCCESS)
+                                <dt>Pengambil</dt>
+                                <dd>
+                                    @if($user->taken_by_user)
+                                        User
+                                    @else
+                                        Admin
+                                    @endif
+                                </dd>
+                            @endif
                         </div>
                     </div>
                 </div>

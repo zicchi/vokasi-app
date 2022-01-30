@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PresenceController;
 use App\Http\Controllers\Admin\UserController;
@@ -55,6 +56,16 @@ Route::group(['middleware' => ['admin']], function () {
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::group(['namespace' => 'Admins', 'prefix' => 'admins', 'as' => 'admins::'], function () {
+            Route::get('/', [AdminController::class, 'index'])->name('index');
+            Route::get('/create', [AdminController::class, 'create'])->name('create');
+            Route::post('/create', [AdminController::class, 'store'])->name('store');
+            Route::get('/edit/{admin}', [AdminController::class, 'edit'])->name('edit');
+            Route::put('/edit/{admin}', [AdminController::class, 'update'])->name('update');
+            Route::delete('/delete/{admin}', [AdminController::class, 'destroy'])->name('destroy');
+            Route::get('/{admin}', [AdminController::class, 'view'])->name('view');
+        });
 
         Route::group(['namespace' => 'Users', 'prefix' => 'users', 'as' => 'users::'], function () {
             Route::get('/', [UserController::class, 'index'])->name('index');

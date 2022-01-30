@@ -35,14 +35,14 @@ class MerchandiseController extends Controller
 
     public function success(User $user)
     {
-        return view('web.success',[
+        return view('merchandise.success',[
             'user' => $user
         ]);
     }
 
     public function check(User $user)
     {
-        return view('web.check',[
+        return view('merchandise.check',[
             'user' => $user
         ]);
     }
