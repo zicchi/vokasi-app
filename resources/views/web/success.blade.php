@@ -9,9 +9,9 @@
 
                 <img src="{{ asset('assets/logo/ub.png') }}" alt="logo-ub"
                     style="margin-top: 2rem; display: block;
-                                                                                                                                                            margin-left: auto;
-                                                                                                                                                            margin-right: auto;
-                                                                                                                                                            width: 20%;">
+                                                                                                                                                                            margin-left: auto;
+                                                                                                                                                                            margin-right: auto;
+                                                                                                                                                                            width: 20%;">
                 <div class="login-brand">
                     Vokasi Universitas Brawijaya
                 </div>
@@ -44,7 +44,6 @@
                                         Terima Kasih <b>{{ $user->name }} </b> kehadirannya dalam Peresmian Fakultas dan
                                         Gedung Vokasi Universitas Brawijaya.
                                         <br>
-                                        <br>
                                         Silahkan mengambil merchandise di booth selanjutnya.
                                     </div>
                                 </div>
@@ -73,10 +72,10 @@
     <div class="footer text-center pb-5">
         <a href="/list"><i class="fas fa-long-arrow-alt-left"></i><b> Back To Homepage</b></a>
     </div>
-    {{-- <script>
+    <script>
         function pageRedirect() {
             window.location.replace("http://localhost:8000/list/");
         }
-        setTimeout("pageRedirect()", 10000);
-    </script> --}}
+        setTimeout("pageRedirect()", 15000);
+    </script>
 @endsection
