@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\AttendanceController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Main\UserController as ListUserController;
+use App\Http\Controllers\MerchandiseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,17 +28,25 @@ Route::group(['namespace' => 'Login', 'prefix' => 'login', 'as' => 'login::'], f
     Route::get('/', [LoginController::class, 'index'])->name('index');
     Route::post('/', [LoginController::class, 'login'])->name('login');
 });
-Route::group(['prefix' => 'list', 'as' => 'list::'], function () {
-    Route::get('/', [ListUserController::class, 'index'])->name('index');
-});
 
-Route::group(['namespace' => 'Api', 'as' => 'api::'], function () {
-    Route::get('/attend/{user}', [AttendanceController::class, 'index'])->name('index');
-    Route::get('/attend/{user}/success', [AttendanceController::class, 'success'])->name('success');
-    Route::get('/attend/{user}/check', [AttendanceController::class, 'check'])->name('check');
+Route::group(['prefix' => 'merchandise', 'as' => 'merch::'], function () {
+    Route::get('/list', [MerchandiseController::class, 'index'])->name('index');
+    Route::get('/attend/{user}', [MerchandiseController::class, 'getMerchandise'])->name('getMerch');
+    Route::get('/attend/{user}/success', [MerchandiseController::class, 'success'])->name('success');
+    Route::get('/attend/{user}/check', [MerchandiseController::class, 'check'])->name('check');
 });
 
 Route::group(['middleware' => ['admin']], function () {
+
+    Route::group(['prefix' => 'operator', 'as' => 'list::'], function () {
+        Route::get('/merchandise', [ListUserController::class, 'index'])->name('index');
+    });
+
+    Route::group(['namespace' => 'Api', 'as' => 'api::'], function () {
+        Route::get('/attend/{user}', [AttendanceController::class, 'index'])->name('index');
+        Route::get('/attend/{user}/success', [AttendanceController::class, 'success'])->name('success');
+        Route::get('/attend/{user}/check', [AttendanceController::class, 'check'])->name('check');
+    });
 
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::'], function () {
 
