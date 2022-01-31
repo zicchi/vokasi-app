@@ -18,6 +18,7 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Jabatan</th>
                         <th scope="col">Fakultas</th>
+                        <th scope="col">Waktu Pengambilan</th>
                         <th scope="col">Merchandise</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -27,6 +28,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->jabatan }}</td>
                             <td>{{ $user->fakultas }}</td>
+                            <td>{{$user->updated_at}}</td>
                             <td>
                                 @if ($user->status == 100)
                                     <span class="badge badge-danger">Belum Diambil</span>

@@ -70,11 +70,11 @@
         </div>
     </div>
     <div class="footer text-center pb-5">
-        <a href="/list"><i class="fas fa-long-arrow-alt-left"></i><b> Back To Homepage</b></a>
+        <a href="{{route('list::index')}}"><i class="fas fa-long-arrow-alt-left"></i><b> Back To Homepage</b></a>
     </div>
     <script>
         function pageRedirect() {
-            window.location.replace("http://localhost:8000/list/");
+            window.location.replace("{{route('list::index')}}");
         }
         setTimeout("pageRedirect()", 15000);
     </script>
