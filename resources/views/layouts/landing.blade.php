@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @livewireStyles
+
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -17,7 +18,32 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+    <style>
+        .logo-ub {
+            margin-top: 2rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 8rem;
+        }
 
+        .navbar-bg {
+            padding-bottom: 100px;
+        }
+
+        @media only screen and (max-width: 768px) {
+
+            /* For mobile phones: */
+            .logo-ub {
+                margin-bottom: 24px;
+            }
+
+            .login-brand {
+                margin-top: 6rem;
+            }
+        }
+
+    </style>
     <!--- Icon -->
     <link rel="icon" href="{{ asset('assets/logo/icon.ico') }}" type="image/gif" sizes="16x16">
 </head>
@@ -28,11 +54,8 @@
 
             <!-- Main Content -->
             <div class="navbar-bg">
+                <img class="logo-ub" src="{{ asset('assets/logo/ub.png') }}" alt="logo-ub">
 
-                <img src="{{ asset('assets/logo/ub.png') }}" alt="logo-ub" style="margin-top: 2rem; display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 10%;">
             </div>
             <div class="main-content">
                 @yield('content')
