@@ -5,7 +5,8 @@
                 <div class="input-group">
                     <ul class="mr-auto"></ul>
                     <label>
-                        <input type="text" name="name" class="form-control"  wire:model="query" placeholder="Search" height="2rem">
+                        <input type="text" name="name" class="form-control" wire:model="query" placeholder="Search"
+                            height="2rem">
                     </label>
                 </div>
             </div>
@@ -28,7 +29,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->jabatan }}</td>
                             <td>{{ $user->fakultas }}</td>
-                            <td>{{$user->updated_at}}</td>
+                            <td>{{ $user->updated_at }}</td>
                             <td>
                                 @if ($user->status == 100)
                                     <span class="badge badge-danger">Belum Diambil</span>
@@ -37,7 +38,6 @@
 
                                 @endif
                             </td>
-                            <td>
                             <td>
                                 <a href="{{ route('admin::users::view', [hashid_encode($user->id, 'user')]) }}"
                                     class="btn btn-link">Rincian</a>
