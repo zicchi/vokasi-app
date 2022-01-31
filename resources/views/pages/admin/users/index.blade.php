@@ -35,6 +35,7 @@
                                 <th>Name</th>
                                 <th>Jabatan</th>
                                 <th>Fakultas</th>
+                                <th>Waktu Pengambilan</th>
                                 <th>Merchandise</th>
                                 <th>Action</th>
                             </tr>
@@ -44,6 +45,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->jabatan }}</td>
                                     <td>{{ $user->fakultas }}</td>
+                                    <td>{{ $user->updated_at }}</td>
                                     <td>
                                         @if ($user->status == 100)
                                             <span class="badge badge-danger">Belum Ambil</span>

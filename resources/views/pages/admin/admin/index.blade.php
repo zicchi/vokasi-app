@@ -41,7 +41,7 @@
                                     <td>{{ $admin->name }}</td>
                                     <td>
                                         <a href="{{ route('admin::admins::view', [hashid_encode($admin->id, 'user')]) }}"
-                                           class="btn btn-link">Rincian</a>
+                                            class="btn btn-link">Rincian</a>
                                     </td>
                                 </tr>
                             @endforeach

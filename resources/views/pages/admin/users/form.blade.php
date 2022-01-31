@@ -36,20 +36,18 @@
                         </div>
                         <div class="form-group">
                             <label>Username</label>
-                            <input type="text" class="form-control" name="username" required=""
-                                value="{{ $user->username }}">
+                            <input type="text" class="form-control" name="username" value="{{ $user->username }}">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="text" class="form-control" name="password" {{ $user->id ? '' : 'required' }}>
+                            <input type="password" class="form-control" name="password">
                             @if ($user->id)
                                 <span class="text-muted">Jangan diisi apapun jika tidak ingin dirubah</span>
                             @endif
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" required=""
-                                value="{{ $user->email }}">
+                            <input type="email" class="form-control" name="email" value="{{ $user->email }}">
                         </div>
                         <div class="form-group">
                             <label>Jabatan</label>
@@ -64,7 +62,7 @@
                             <div class="form-group">
                                 <label>Merchandise</label>
                                 <select class="form-control" name="status">
-                                    @if ($user->status == 100)
+                                    @if ($user->status == 100 || $user->status == '')
                                         <option value="100">Belum Ambil</option>
                                         <option value="2">Sudah Ambil</option>
                                     @else
