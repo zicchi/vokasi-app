@@ -30,8 +30,8 @@ Route::group(['namespace' => 'Login', 'prefix' => 'login', 'as' => 'login::'], f
     Route::post('/', [LoginController::class, 'login'])->name('login');
 });
 
-Route::group(['prefix' => 'merchandise', 'as' => 'merch::'], function () {
-    Route::get('/list', [MerchandiseController::class, 'index'])->name('index');
+Route::group(['prefix' => 'user', 'as' => 'merch::'], function () {
+    Route::get('/merchandise', [MerchandiseController::class, 'index'])->name('index');
     Route::get('/attend/{user}', [MerchandiseController::class, 'getMerchandise'])->name('getMerch');
     Route::get('/attend/{user}/success', [MerchandiseController::class, 'success'])->name('success');
     Route::get('/attend/{user}/check', [MerchandiseController::class, 'check'])->name('check');
