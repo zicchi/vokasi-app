@@ -44,12 +44,6 @@
         </div>
     </div>
 
-    <nav class="d-inline-block">
-        <ul class="pagination flex-wrap">
-
-            {{ $users->links() }}
-        </ul>
-    </nav>
     {{-- <div class="card-footer text-right mb-8">
 
     </div> --}}
