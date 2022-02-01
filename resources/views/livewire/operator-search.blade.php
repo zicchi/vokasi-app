@@ -37,14 +37,7 @@
                                 @endif
                             </td>
                             <td>
-                                @if ($user->status == \App\Models\User::STATUS_DEFAULT)
-                                    <a href="javascript:"
-                                        onclick="if(confirm('Hadiah {{ $user->name }} akan diambil')){$('#get-item-{{ $user->id }}').submit()}"
-                                        class="btn btn-primary">Konfirmasi</a>
-                                    <form action="{{ route('api::index', [$user]) }}" method="get"
-                                        class="hidden" id="get-item-{{ $user->id }}">
-                                    </form>
-                                @endif
+                                {!! $user->status == 100 ? '<button class="btn btn-primary mb-2" data-toggle="modal"                                                                                                         data-target="#exampleModal' . $user->id . '"><i class="far fa-edit"></i></button> ' : '<button class="btn btn-success disabled"><i class="fas fa-check"></i></button>' !!}
                             </td>
                         </tr>
                     @endforeach
