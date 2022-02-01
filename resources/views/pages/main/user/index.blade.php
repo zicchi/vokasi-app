@@ -11,7 +11,7 @@
             <h1>Data Undangan</h1>
         </div>
         <div class="section-body ">
-            <livewire:user-search />
+            <livewire:operator-search />
         </div>
     </section>
     @foreach ($users as $user)
