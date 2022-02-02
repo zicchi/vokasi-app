@@ -1,9 +1,9 @@
 <div>
     <div class="card">
-        <div class="card-header-action">
-            <div class="card-header">
+        <div class="card-header">
+            <a href="{{ route('admin::users::create') }}" class="btn btn-primary mr-auto">Tambah User +</a>
+            <div class="card-header-action">
                 <div class="input-group">
-                    <ul class="mr-auto"></ul>
                     <label>
                         <input type="text" name="name" class="form-control" wire:model="query" placeholder="Search"
                             height="2rem">

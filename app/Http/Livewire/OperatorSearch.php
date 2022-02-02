@@ -21,7 +21,10 @@ class OperatorSearch extends Component
 
     public function render()
     {
-        $users = User::where('name', 'like', "%" . $this->query . "%")->paginate(20);
+        $users = User::where('name', 'like', "%" . $this->query . "%")
+            ->orWhere('jabatan', 'like', "%" . $this->query . "%")
+            ->orWhere('fakultas', 'like', "%" . $this->query . "%")
+            ->paginate(20);
         return view('livewire.operator-search', [
             'users' => $users
         ]);

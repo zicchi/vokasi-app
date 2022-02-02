@@ -35,21 +35,6 @@
                             <input type="text" class="form-control" name="name" required="" value="{{ $user->name }}">
                         </div>
                         <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control" name="username" value="{{ $user->username }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="password">
-                            @if ($user->id)
-                                <span class="text-muted">Jangan diisi apapun jika tidak ingin dirubah</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" name="email" value="{{ $user->email }}">
-                        </div>
-                        <div class="form-group">
                             <label>Jabatan</label>
                             <input type="jabatan" class="form-control" name="jabatan" required=""
                                 value="{{ $user->jabatan }}">
