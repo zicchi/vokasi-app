@@ -74,6 +74,7 @@ Route::group(['middleware' => ['admin']], function () {
             Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
             Route::put('/edit/{user}', [UserController::class, 'update'])->name('update');
             Route::delete('/delete/{user}', [UserController::class, 'destroy'])->name('destroy');
+            Route::get('/export', [UserController::class, 'export'])->name('export');
             Route::get('/{user}', [UserController::class, 'view'])->name('view');
             Route::get('/status/{user}', [UserController::class, 'success'])->name('success');
         });

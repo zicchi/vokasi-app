@@ -1,7 +1,8 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('admin::users::create') }}" class="btn btn-primary mr-auto">Tambah User +</a>
+            <a href="{{ route('admin::users::create') }}" class="btn btn-primary">Tambah User +</a>
+            <a href="{{ route('admin::users::export') }}" class="btn btn-success ml-3 mr-auto">Export</a>
             <div class="card-header-action">
                 <div class="input-group">
                     <label>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\UsersExport;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -91,5 +93,10 @@ class UserController extends Controller
         $user->save();
 
         return redirect(route('admin::users::index'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'merchandise.xlsx');
     }
 }
